@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package matiere;
+
+message Matiere {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+
+}
+
+message GetMatiereRequest {
+  string matiere_id = 1;
+}
+
+message GetMatiereResponse {
+  Matiere matiere = 1;
+}
+
+message SearchMatieresRequest {
+  string query = 1;
+}
+
+message SearchMatieresResponse {
+  repeated Matiere matieres = 1;
+}
+
+message CreateMatiereRequest {
+  string matiere_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message CreateMatiereResponse {
+  Matiere matiere = 1;
+}
+
+message UpdateMatiereRequest {
+  string matiere_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message UpdateMatiereResponse {
+  Matiere matiere = 1;
+}
+
+message DeleteMatiereRequest {
+  string matiere_id = 1;
+}
+
+message DeleteMatiereResponse {
+  bool success = 1;
+}
+
+service MatiereService {
+  rpc GetMatiere(GetMatiereRequest) returns (GetMatiereResponse);
+  rpc SearchMatieres(SearchMatieresRequest) returns (SearchMatieresResponse);
+  rpc CreateMatiere(CreateMatiereRequest) returns (CreateMatiereResponse);
+  rpc UpdateMatiere(UpdateMatiereRequest) returns (UpdateMatiereResponse);
+  rpc DeleteMatiere(DeleteMatiereRequest) returns (DeleteMatiereResponse);
+}

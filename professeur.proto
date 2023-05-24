@@ -1,0 +1,98 @@
+syntax = "proto3";
+
+package professeur;
+import "matiere.proto";
+
+message Professeur {
+  string id = 1;
+  string name = 2;
+  Matiere matiere = 3;
+}
+
+message GetProfesseurRequest {
+  string professeur_id = 1;
+}
+
+message GetProfesseurResponse {
+  Professeur professeur = 1;
+}
+
+message SearchProfesseursRequest {
+  string query = 1;
+}
+
+message SearchProfesseursResponse {
+  repeated Professeur professeurs = 1;
+}
+
+message CreateProfesseurRequest {
+  string professeur_id = 1;
+  string name = 2;
+  string matiere_id = 3;
+}
+
+message CreateProfesseurResponse {
+  Professeur professeur = 1;
+}
+
+message DeleteProfesseurRequest {
+  string professeur_id = 1;
+}
+
+message DeleteProfesseurResponse {
+  bool success = 1;
+}
+
+service ProfesseurService {
+  rpc GetProfesseur(GetProfesseurRequest) returns (GetProfesseurResponse);
+  rpc SearchProfesseurs(SearchProfesseursRequest) returns (SearchProfesseursResponse);
+  rpc CreateProfesseur(CreateProfesseurRequest) returns (CreateProfesseurResponse);
+  rpc DeleteProfesseur(DeleteProfesseurRequest) returns (DeleteProfesseurResponse);
+}
+
+
+
+
+
+
+
+
+/*
+message CreateProfesseurRequest {
+  string professeur_id = 1;
+  string name = 2;
+  Matiere matiere = 3;
+}
+
+message CreateProfesseurResponse {
+  Professeur professeur = 1;
+}
+
+
+message UpdateProfesseurRequest {
+  string matiere_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message UpdateProfesseurResponse {
+  Professeur matiere = 1;
+}
+
+message DeleteProfesseurRequest {
+  string matiere_id = 1;
+}
+
+message DeleteProfesseurResponse {
+  bool success = 1;
+}
+
+service ProfesseurService {
+  rpc GetProfesseur(GetProfesseurRequest) returns (GetProfesseurResponse);
+  rpc SearchProfesseurs(SearchProfesseursRequest) returns (SearchProfesseursResponse);
+  rpc CreateProfesseur(CreateProfesseurRequest) returns (CreateProfesseurResponse);
+  rpc UpdateProfesseur(UpdateProfesseurRequest) returns (UpdateProfesseurResponse);
+  rpc DeleteProfesseur(DeleteProfesseurRequest) returns (DeleteProfesseurResponse);
+}
+
+*/
